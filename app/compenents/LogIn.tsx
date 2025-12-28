@@ -18,7 +18,7 @@ interface logInTypes {
 function LogIn() {
   const { theme } = useTheme();
   const router = useRouter();
-  const { updateUser } = useUserStore();
+  const { updateUser, AccInfo } = useUserStore();
 
   const formik = useFormik<logInTypes>({
     initialValues: {
@@ -49,6 +49,8 @@ function LogIn() {
             //  if authothication correct alert
             updateUser(true);
             router.push("/");
+            const fullName = tasks[0].firstname + " " + tasks[0].lastname;
+            AccInfo(fullName, tasks[0].email);
           }
         })
         .catch((error) => {

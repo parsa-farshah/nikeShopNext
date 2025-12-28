@@ -66,7 +66,7 @@ const validate = (values) => {
 function SignUp() {
   const { theme } = useTheme();
   const router = useRouter();
-  const { login, updateUser } = useUserStore();
+  const { login, updateUser, AccInfo } = useUserStore();
 
   const formik = useFormik<SignUpFormValues>({
     initialValues: {
@@ -117,6 +117,8 @@ function SignUp() {
               .then((task) => {
                 updateUser(true);
                 router.push("/");
+                let fullName = values.firstName + " " + values.lastName;
+                AccInfo(fullName, values.email);
               })
               .catch((error) => {
                 // handle error
