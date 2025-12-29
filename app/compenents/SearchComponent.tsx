@@ -1,8 +1,7 @@
 "use client";
 import useUserStore from "../store";
 
-function SearchComponent({ placeholder }) {
-  const { theme } = useUserStore();
+function SearchComponent({ placeholder }: { placeholder?: string }) {
   return (
     <div>
       <input

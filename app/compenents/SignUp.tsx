@@ -26,7 +26,7 @@ const oxanium = Oxanium({
   subsets: ["latin"],
 });
 
-const validate = (values) => {
+const validate = (values: SignUpFormValues) => {
   const errors: SignUpFormErrors = {};
   if (!values.firstName) {
     errors.firstName = "Required";

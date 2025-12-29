@@ -1,6 +1,14 @@
 import { create } from "zustand";
 
-const useUserStore = create((set) => ({
+interface storeTypes {
+  login: boolean;
+  AccEmail: string;
+  AccFullName: string;
+  updateUser: (logINUser: boolean) => void;
+  AccInfo: (userEmail: string, userFullName: string) => void;
+}
+
+const useUserStore = create<storeTypes>((set) => ({
   login: false,
   AccEmail: "",
   AccFullName: "",
