@@ -5,7 +5,7 @@ import LogOutBtn from "./LogOutBtn";
 function AccountMain() {
   const { AccEmail, AccFullName } = useUserStore();
   return (
-    <div className="w-full bg-white dark:bg-black py-9 px-4 md:px-[20%]">
+    <div className="w-full bg-white dark:bg-black py-20 px-4 md:px-[20%]">
       <div>
         <h5 className="text-5xl mb-4">My Account</h5>
         <LogOutBtn />
