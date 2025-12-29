@@ -2,6 +2,7 @@ import React from "react";
 import SearchComponent from "./SearchComponent";
 import FooterMobileAccordion from "./FooterMobileAccordion";
 import Image from "next/image";
+import LogoFooter from "./LogoFooter";
 
 function Footer() {
   const support = ["Shipping & FAQs", "Contact", "HSA/FSA", "Blog", "Sitemap"];
@@ -111,7 +112,7 @@ function Footer() {
       </div>
       {/* logo */}
       <div className="relative w-full h-[133px] mt-10">
-        <Image className="w-full h-fit" fill src="/logo.svg" alt="logo" />
+        <LogoFooter />
       </div>
     </div>
   );
