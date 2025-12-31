@@ -1,11 +1,18 @@
 import type { NextConfig } from "next";
-const isProd = process.env.NODE_ENV === "production";
+// const isProd = process.env.NODE_ENV === "production";
 
 const nextConfig: NextConfig = {
   /* config options here */
-  output: isProd ? "export" : undefined,
+  // output: isProd ? "export" : undefined,
+  output: "export",
   images: {
-    domains: ["raw.githubusercontent.com"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "raw.githubusercontent.com",
+        pathname: "/parsa-farshah/**",
+      },
+    ],
   },
 };
 
