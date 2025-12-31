@@ -58,7 +58,7 @@ function BestSellers() {
         {item.length > 0 &&
           item[0].data[0].products.map((val: any, i: number) => (
             <SwiperSlide key={i}>
-              <Link href={val.id} className="cursor-pointer">
+              <Link href={"/"} className="cursor-pointer">
                 <div className="w-full h-[559px] relative group overflow-hidden">
                   {/* default image */}
                   <Image
