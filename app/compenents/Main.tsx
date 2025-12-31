@@ -1,6 +1,4 @@
 import Image from "next/image";
-import bgMobile from "../../public/bgmobile.jpg";
-import bgDesktop from "../../public/desktop.png";
 import Link from "next/link";
 import BestSellers from "./BestSellers";
 
@@ -12,14 +10,14 @@ function Main() {
         <Image
           className="md:hidden"
           fill
-          src={bgMobile}
+          src={"/bgmobile.jpg"}
           objectFit="cover"
           alt="background mobile"
         />
         <Image
           className="hidden md:block"
           fill
-          src={bgDesktop}
+          src={"/desktop.png"}
           objectFit="cover"
           alt="background mobile"
         />
