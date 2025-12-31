@@ -8,14 +8,14 @@ function Main() {
       {/* header */}
       <div className="w-full h-[90vh] relative">
         <Image
-          className="md:hidden"
+          className="md:hidden object-cover"
           fill
           src={"/bgmobile.jpg"}
           objectFit="cover"
           alt="background mobile"
         />
         <Image
-          className="hidden md:block"
+          className="hidden md:block object-cover"
           fill
           src={"/desktop.png"}
           objectFit="cover"
