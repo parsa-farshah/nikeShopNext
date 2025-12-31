@@ -5,12 +5,7 @@ const nextConfig: NextConfig = {
   /* config options here */
   output: isProd ? "export" : undefined,
   images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "raw.githubusercontent.com",
-      },
-    ],
+    domains: ["raw.githubusercontent.com"],
   },
 };
 
