@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import BestSellers from "./BestSellers";
+import AllProdocts from "./AllProdocts";
 
 function Main() {
   return (
@@ -80,6 +81,10 @@ function Main() {
             women's
           </div>
         </div>
+      </div>
+      {/* all products */}
+      <div>
+        <AllProdocts />
       </div>
     </div>
   );
