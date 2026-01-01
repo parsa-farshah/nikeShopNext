@@ -25,9 +25,9 @@ function AllProdocts() {
   return (
     <div className="flex flex-wrap gap-0.5 py-40">
       {item.length > 0 &&
-        item[0].data[0].products.map((val : any, i : number) => {
+        item[0].data[0].products.map((val: any, i: number) => {
           return (
-            <div className="w-1/2 md:w-[16.5%] h-[280px] group relative cursor-pointer">
+            <div className="w-[49%] md:w-[16.5%] h-[280px] group relative cursor-pointer">
               {/* default image */}
               <Image
                 src={val.colors[0].images.card.default}
@@ -46,9 +46,9 @@ function AllProdocts() {
           );
         })}
       {item.length > 0 &&
-        item[0].data[1].products.map((val : any, i : number) => {
+        item[0].data[1].products.map((val: any, i: number) => {
           return (
-            <div className="w-1/2 md:w-[16.5%] group h-[280px] relative cursor-pointer">
+            <div className="w-[49%] md:w-[16.5%] group h-[280px] relative cursor-pointer">
               {/* default image */}
               <Image
                 src={val.colors[0].images.card.default}
@@ -67,9 +67,9 @@ function AllProdocts() {
           );
         })}
       {item.length > 0 &&
-        item[0].data[2].products.map((val : any, i : number) => {
+        item[0].data[2].products.map((val: any, i: number) => {
           return (
-            <div className="w-1/2 md:w-[16.5%] h-[280px] group relative cursor-pointer">
+            <div className="w-[49%] md:w-[16.5%] h-[280px] group relative cursor-pointer">
               {/* default image */}
               <Image
                 src={val.colors[0].images.card.default}
@@ -87,7 +87,7 @@ function AllProdocts() {
             </div>
           );
         })}
-      <div className="w-1/2 md:w-[16.5%] h-[280px] group relative bg-[#e8e9e4] flex justify-center items-center text-black">
+      <div className="w-1/2 md:w-[16.5%] h-[280px] group relative bg-[#e8e9e4] hover:bg-[#bebebe] duration-300 flex justify-center items-center text-black cursor-pointer">
         View All
       </div>
     </div>
