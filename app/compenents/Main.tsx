@@ -68,15 +68,15 @@ function Main() {
       </div>
       {/* image mens womens */}
       <div className="relative flex flex-col md:flex-row">
-        <div className="w-full md:w-1/2 h-[606px] relative">
+        <div className="w-full md:w-1/2 h-[606px] md:h-[810px] relative">
           <Image fill src={"/men.jpg"} alt="mens" className="object-cover" />
-          <div className="absolute left-[5%] top-[5%] text-lg font-extrabold capitalize">
+          <div className="absolute text-white left-[5%] top-[5%] text-lg font-extrabold capitalize">
             men's
           </div>
         </div>
-        <div className="w-full md:w-1/2 h-[606px] relative">
+        <div className="w-full md:w-1/2 h-[606px] md:h-[810px] relative">
           <Image fill src={"/women.jpg"} alt="mens" className="object-cover" />
-          <div className="absolute left-[5%] top-[5%] text-lg font-extrabold capitalize">
+          <div className="absolute text-white left-[5%] top-[5%] text-lg font-extrabold capitalize">
             women's
           </div>
         </div>

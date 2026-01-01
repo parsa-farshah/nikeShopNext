@@ -34,7 +34,7 @@ function BestSellers() {
   }, []);
 
   return (
-    <div className="w-full bg-white dark:bg-black">
+    <div className="w-full bg-white dark:bg-black pb-40">
       <Swiper
         slidesPerView={1}
         spaceBetween={5}
