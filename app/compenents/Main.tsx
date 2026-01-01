@@ -9,8 +9,7 @@ function Main() {
       <div className="w-full h-[90vh] relative">
         <Image
           className="md:hidden object-cover"
-          width={500}
-          height={500}
+          fill
           src={"/bgmobile.jpg"}
           objectFit="cover"
           alt="background mobile"
