@@ -6,7 +6,7 @@ function Main() {
   return (
     <div>
       {/* header */}
-      <div className="w-full h-[90vh] relative">
+      <div className="w-full h-[90vh] relative bg-white dark:bg-black">
         <Image
           className="md:hidden object-cover"
           fill
