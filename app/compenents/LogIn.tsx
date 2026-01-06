@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useFormik } from "formik";
 import { useRouter } from "next/navigation";
 import useUserStore from "../store";
+import { toast } from "react-toastify";
 
 const oxanium = Oxanium({
   subsets: ["latin"],
@@ -51,6 +52,7 @@ function LogIn() {
             router.push("/");
             const fullName = tasks[0].firstname + " " + tasks[0].lastname;
             AccInfo(fullName, tasks[0].email);
+            toast.success(`Log In Successfully`);
           }
         })
         .catch((error) => {

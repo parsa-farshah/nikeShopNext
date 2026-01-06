@@ -22,7 +22,7 @@ function page() {
     <div>
       <div className="w-full bg-white dark:bg-black pb-40 flex flex-wrap justify-between ">
         <Header />
-        <div className="w-[65%] h-fit  px-10 ">
+        <div className="w-full md:w-[65%] h-fit px-10 ">
           {basket &&
             basket.map((val, i) => {
               return (
@@ -33,7 +33,7 @@ function page() {
                   <div className="cursor-pointer w-full h-full">
                     <div className="w-full h-[200px] flex items-center justify-between">
                       {/* image */}
-                      <div className="w-[150px] h-[200px] relative group overflow-hidden">
+                      <div className="w-[100px] h-[150px] md:w-[150px] md:h-[200px] relative group overflow-hidden">
                         {/* default image */}
                         <Image
                           src={val.colors[0].images.card.default}
@@ -50,22 +50,29 @@ function page() {
                         />
                       </div>
                       {/* title and sale price */}
-                      <div className=" h-full flex items-center justify-center flex-col gap-y-4">
-                        <h3>{val.title}</h3>
+                      <div className="h-full flex items-center justify-center flex-col gap-y-4">
+                        <h3 className="text-xs md:text-[16px] font-extrabold">
+                          {val.title}
+                        </h3>
                         <h5 className="font-black">${val.salePrice}</h5>
                       </div>
                       {/* add delete and count */}
-                      <div className="flex gap-2 items-center px-4 py-2 border border-black dark:border-white rounded-sm">
-                        <MinusIcon onClick={() => decrease(val.id)} />
-                        <span className="font-semibold text-lg">
-                          {val.count}
-                        </span>
-                        <PlusIcon onClick={() => increaseBtn(val.id)} />
+                      <div className="flex flex-col gap-5 items-center justify-between md:flex-row">
+                        <div className="flex gap-2 items-center px-4 py-2 border border-black dark:border-white rounded-sm">
+                          <MinusIcon onClick={() => decrease(val.id)} />
+                          <span className="font-semibold text-xs md:text-lg">
+                            {val.count}
+                          </span>
+                          <PlusIcon onClick={() => increaseBtn(val.id)} />
+                        </div>
+                        {/* price all */}
+                        <div>
+                          <span className="text-lg font-bold">
+                            ${val.salePrice * val.count}
+                          </span>
+                        </div>
                       </div>
-                      {/* price all */}
-                      <div>
-                        <span className="text-lg font-bold">${val.salePrice * val.count}</span>
-                      </div>
+
                       {/* delete */}
                       <TrashIcon
                         className="w-8 h-8"

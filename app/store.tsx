@@ -1,6 +1,5 @@
 import { create } from "zustand";
 import { toast } from "react-toastify";
-import { Item } from "@radix-ui/react-accordion";
 
 interface storeTypes {
   login: boolean;

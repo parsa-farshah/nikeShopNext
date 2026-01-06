@@ -2,11 +2,10 @@
 import { Oxanium } from "next/font/google";
 import { useTheme } from "next-themes";
 import Link from "next/link";
-import { useState } from "react";
-import React from "react";
 import { useFormik } from "formik";
 import useUserStore from "../store";
 import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 interface SignUpFormValues {
   firstName: string;
@@ -119,12 +118,13 @@ function SignUp() {
                 router.push("/");
                 let fullName = values.firstName + " " + values.lastName;
                 AccInfo(fullName, values.email);
+                toast.success(`Sign Up Successfully`);
               })
               .catch((error) => {
                 // handle error
               });
           } else {
-            alert("user exist");
+            toast.error(`Account Already Create Log In`);
           }
         })
         .catch((error) => {

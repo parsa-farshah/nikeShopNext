@@ -12,6 +12,7 @@ const oxanium = Oxanium({
 });
 
 function Header() {
+  const { basket } = useUserStore();
   const [searchWrapper, setSearchWrapper] = useState(false);
   const { setTheme, theme } = useTheme();
 
@@ -187,7 +188,7 @@ function Header() {
           href={"./basket"}
           className={`px-2 cursor-pointer text-sm capitalize  hover:border-b hover:border-b-black dark:hover:border-b-white duration-300`}
         >
-          shop(0)
+          shop({basket.length})
         </Link>
       </div>
     </header>
