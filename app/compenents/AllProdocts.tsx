@@ -49,7 +49,7 @@ function AllProdocts() {
         item.length > 0 &&
         item.map((val: any, i: number) => {
           return (
-            <div className="w-[49%] md:w-[16.5%] h-[280px]">
+            <div key={i} className="w-[49%] md:w-[16.5%] h-[280px]">
               <Link href={val.id} className="w-fit h-fit">
                 <div className=" w-full h-full group relative cursor-pointer">
                   {/* default image */}

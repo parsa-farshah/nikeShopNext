@@ -15,11 +15,15 @@ import arrowRight from "../../public/arrowRight.svg";
 import Link from "next/link";
 import { Skeleton } from "@/components/ui/skeleton";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import ClickAddToBasket from "./ClickAddToBasket";
+import { Alert, AlertTitle } from "@/components/ui/alert";
+import { CheckCircle2Icon, PopcornIcon, XCircleIcon } from "lucide-react";
+import useUserStore from "../store";
 
 function Page({ params }: { params: any }) {
   let temp = useParams();
   const _id = temp.slug;
-
+  // const [alert, setAlert] = useState(false);
   const [item, setItem] = useState<any>("");
   const [loading, setLoading] = useState(true);
 
@@ -167,7 +171,7 @@ function Page({ params }: { params: any }) {
             </div>
             {/* text */}
             <span className="flex items-center">
-              ({" "}
+              (
               {loading ? (
                 <Skeleton className="w-20 h-4 bg-gray-300" />
               ) : (
@@ -188,6 +192,7 @@ function Page({ params }: { params: any }) {
               item.shortDescription
             )}
           </p>
+
           {/* fit */}
           <div className="mt-8">
             <h5>Fit</h5>
@@ -199,15 +204,15 @@ function Page({ params }: { params: any }) {
             {/* radio group */}
             <RadioGroup defaultValue="comfortable" className="mt-4 flex">
               {item &&
-                item.extra.fit.map((val: string, i: number) => {
+                item.extra.fit.map((val: string, i: string) => {
                   return (
                     <div key={i} className="flex items-center gap-3">
                       <RadioGroupItem
-                        value="default"
-                        id="r1"
+                        value={i}
+                        id={"r" + i}
                         className="border border-black dark:border-white"
                       />
-                      <label htmlFor="r1" className="text-sm">
+                      <label htmlFor={"r" + i} className="text-sm">
                         {val}
                       </label>
                     </div>
@@ -217,9 +222,10 @@ function Page({ params }: { params: any }) {
           </div>
 
           {/* add to cart */}
-          <div className="w-full h-16 flex justify-center items-center border border-black dark:border-white mt-10 font-semibold cursor-pointer bg-white dark:bg-black hover:bg-[#ebebeb] dark:hover:bg-[#1a1a1a] duration-300">
-            Add to cart
-          </div>
+          <ClickAddToBasket item={item} />
+
+          {/* got to basket page */}
+          <Link href={"./basket"}>Basket</Link>
         </div>
 
         {/* slider */}
