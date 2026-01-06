@@ -17,7 +17,12 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import ClickAddToBasket from "./ClickAddToBasket";
 import { Alert, AlertTitle } from "@/components/ui/alert";
-import { CheckCircle2Icon, PopcornIcon, XCircleIcon } from "lucide-react";
+import {
+  ArrowLeft,
+  CheckCircle2Icon,
+  PopcornIcon,
+  XCircleIcon,
+} from "lucide-react";
 import useUserStore from "../store";
 
 function Page({ params }: { params: any }) {
@@ -56,7 +61,12 @@ function Page({ params }: { params: any }) {
         {/* products detail */}
         <div className="w-full md:w-[40%] h-fit px-[2%]  py-[4%] md:pt-[10%]">
           {/* home link */}
-          <Link href={"./"}>Home</Link>
+          <div className="flex gap-2">
+            <Link href={"./"}>Home</Link>
+            <h2>{">"}</h2>
+            <Link href={"#"}>{item.id}</Link>
+          </div>
+
           <h6 className="text-[#c94925] font-semibold w-full mt-4">Sale</h6>
           {/* model and price */}
           <div className="flex items-center justify-between">
@@ -225,7 +235,12 @@ function Page({ params }: { params: any }) {
           <ClickAddToBasket item={item} />
 
           {/* got to basket page */}
-          <Link href={"./basket"}>Basket</Link>
+          <Link
+            className="font-semibold w-fit mt-4 flex bg-gray-200 border border-black dark:border-white py-2 px-4"
+            href={"./basket"}
+          >
+            Basket Page
+          </Link>
         </div>
 
         {/* slider */}

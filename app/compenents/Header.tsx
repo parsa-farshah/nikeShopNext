@@ -148,7 +148,9 @@ function Header() {
           <SearchIcon className="w-5 h-5 mr-2 " />
         </div>
         <div className="px-2 cursor-pointer hover:border-b hover:border-b-black pb-1 duration-300">
-          <ShoppingCart className="w-5 h-5 mr-2 cursor-pointer" />
+          <Link href={"./basket"}>
+            <ShoppingCart className="w-5 h-5 mr-2 cursor-pointer" />
+          </Link>
         </div>
         <div className="px-2 cursor-pointer hover:border-b hover:border-b-black pb-1 duration-300">
           <MenuIcon className="w-5 h-5 mr-2 cursor-pointer" />
@@ -181,11 +183,12 @@ function Header() {
           </Link>
         )}
 
-        <span
+        <Link
+          href={"./basket"}
           className={`px-2 cursor-pointer text-sm capitalize  hover:border-b hover:border-b-black dark:hover:border-b-white duration-300`}
         >
           shop(0)
-        </span>
+        </Link>
       </div>
     </header>
   );
