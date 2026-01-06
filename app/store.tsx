@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { toast } from "react-toastify";
+import { Item } from "@radix-ui/react-accordion";
 
 interface storeTypes {
   login: boolean;
@@ -11,6 +12,8 @@ interface storeTypes {
   AccInfo: (userEmail: string, userFullName: string) => void;
   updateBasket: (item: any) => void;
   deleteItem: (item: any) => void;
+  increaseBtn: (item: any) => void;
+  decrease: (item: any) => void;
 }
 
 const useUserStore = create<storeTypes>((set) => ({
@@ -41,6 +44,24 @@ const useUserStore = create<storeTypes>((set) => ({
       toast.warning(`${id} deleted`);
 
       return { basket: state.basket.filter((item) => item.id !== id) };
+    }),
+
+  // increase item
+  increaseBtn: (id) =>
+    set((state) => {
+      const newCountItem = state.basket.map((item) =>
+        item.id == id ? { ...item, count: item.count + 1 } : item
+      );
+      return { basket: newCountItem };
+    }),
+
+  // decrease item
+  decrease: (id) =>
+    set((state) => {
+      const newCountItem = state.basket.map((item) =>
+        item.id == id ? { ...item, count: item.count + 1 } : item
+      );
+      return { basket: newCountItem };
     }),
 }));
 

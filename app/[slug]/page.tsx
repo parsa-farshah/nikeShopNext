@@ -236,7 +236,7 @@ function Page({ params }: { params: any }) {
 
           {/* got to basket page */}
           <Link
-            className="font-semibold w-fit mt-4 flex bg-gray-200 border border-black dark:border-white py-2 px-4"
+            className="font-semibold w-fit mt-4 flex bg-gray-100 dark:bg-gray-950 border border-black dark:border-white py-2 px-4"
             href={"./basket"}
           >
             Basket Page

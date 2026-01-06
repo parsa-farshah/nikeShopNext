@@ -4,15 +4,17 @@ import useUserStore from "../store";
 import Header from "../compenents/Header";
 import Footer from "../compenents/Footer";
 import { useEffect } from "react";
-import { TrashIcon } from "@radix-ui/react-icons";
+import { MinusIcon, PlusIcon, TrashIcon } from "@radix-ui/react-icons";
 
 function page() {
   const { basket } = useUserStore();
   const totalItem = basket.reduce(
-    (sum, item) => sum + Number(item.salePrice),
+    (sum, item) => sum + Number(item.salePrice * item.count),
     0
   );
   const deleteItem = useUserStore((state) => state.deleteItem);
+  const increaseBtn = useUserStore((state) => state.increaseBtn);
+  const decrease = useUserStore((state) => state.decrease);
 
   useEffect(() => {}, [basket]);
 
@@ -52,6 +54,18 @@ function page() {
                         <h3>{val.title}</h3>
                         <h5 className="font-black">${val.salePrice}</h5>
                       </div>
+                      {/* add delete and count */}
+                      <div className="flex gap-2 items-center px-4 py-2 border border-black dark:border-white rounded-sm">
+                        <MinusIcon onClick={() => decrease(val.id)} />
+                        <span className="font-semibold text-lg">
+                          {val.count}
+                        </span>
+                        <PlusIcon onClick={() => increaseBtn(val.id)} />
+                      </div>
+                      {/* price all */}
+                      <div>
+                        <span className="text-lg font-bold">${val.salePrice * val.count}</span>
+                      </div>
                       {/* delete */}
                       <TrashIcon
                         className="w-8 h-8"
@@ -75,7 +89,7 @@ function page() {
             </div>
           </div>
           {/* checkout btn */}
-          <button className="border border-black dark:border-white w-full h-14 cursor-pointer mt-6 hover:bg-[#ebebeb] dark:hover:bg-[#1a1a1a] duration-300">
+          <button className="border border-black dark:border-white w-full h-14 cursor-pointer mt-6 hover:bg-[#ebebeb] dark:hover:bg-[#1a1a1a] duration-300 font-semibold">
             Check Out
           </button>
         </div>
