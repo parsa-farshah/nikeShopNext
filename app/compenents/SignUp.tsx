@@ -119,6 +119,9 @@ function SignUp() {
                 let fullName = values.firstName + " " + values.lastName;
                 AccInfo(fullName, values.email);
                 toast.success(`Sign Up Successfully`);
+                localStorage.setItem("fullname", fullName);
+                localStorage.setItem("email", values.email);
+                localStorage.setItem("isLoggedIn", "true");
               })
               .catch((error) => {
                 // handle error

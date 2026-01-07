@@ -5,6 +5,12 @@ import Header from "../compenents/Header";
 import Footer from "../compenents/Footer";
 import { useEffect } from "react";
 import { MinusIcon, PlusIcon, TrashIcon } from "@radix-ui/react-icons";
+import { Oxanium } from "next/font/google";
+
+const oxanium = Oxanium({
+  subsets: ["latin"],
+});
+
 
 function page() {
   const { basket } = useUserStore();
@@ -19,10 +25,10 @@ function page() {
   useEffect(() => {}, [basket]);
 
   return (
-    <div>
-      <div className="w-full bg-white dark:bg-black pb-40 flex flex-wrap justify-between ">
+    <div className={oxanium.className}>
+      <div className="w-full bg-white dark:bg-black pb-40 flex flex-wrap justify-between">
         <Header />
-        <div className="w-full md:w-[65%] h-fit px-10 ">
+        <div className="w-full md:w-[65%] h-fit px-5 md:px-10">
           {basket &&
             basket.map((val, i) => {
               return (
@@ -51,13 +57,13 @@ function page() {
                       </div>
                       {/* title and sale price */}
                       <div className="h-full flex items-center justify-center flex-col gap-y-4">
-                        <h3 className="text-xs md:text-[16px] font-extrabold">
+                        <h3 className="text-[8px] md:text-[16px] font-extrabold">
                           {val.title}
                         </h3>
                         <h5 className="font-black">${val.salePrice}</h5>
                       </div>
                       {/* add delete and count */}
-                      <div className="flex flex-col gap-5 items-center justify-between md:flex-row">
+                      <div className="flex flex-col gap-5 items-center justify-between md:flex-row w-fit">
                         <div className="flex gap-2 items-center px-4 py-2 border border-black dark:border-white rounded-sm">
                           <MinusIcon onClick={() => decrease(val.id)} />
                           <span className="font-semibold text-xs md:text-lg">
@@ -66,7 +72,7 @@ function page() {
                           <PlusIcon onClick={() => increaseBtn(val.id)} />
                         </div>
                         {/* price all */}
-                        <div>
+                        <div className="w-12">
                           <span className="text-lg font-bold">
                             ${val.salePrice * val.count}
                           </span>

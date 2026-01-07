@@ -16,14 +16,11 @@ import Link from "next/link";
 import { Skeleton } from "@/components/ui/skeleton";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import ClickAddToBasket from "./ClickAddToBasket";
-import { Alert, AlertTitle } from "@/components/ui/alert";
-import {
-  ArrowLeft,
-  CheckCircle2Icon,
-  PopcornIcon,
-  XCircleIcon,
-} from "lucide-react";
-import useUserStore from "../store";
+import { Oxanium } from "next/font/google";
+const oxanium = Oxanium({
+  subsets: ["latin"],
+});
+
 
 function Page({ params }: { params: any }) {
   let temp = useParams();

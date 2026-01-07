@@ -2,6 +2,7 @@
 import Link from "next/link";
 import useUserStore from "../store";
 import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 function LogOutBtn() {
   const { updateUser } = useUserStore();
@@ -9,6 +10,10 @@ function LogOutBtn() {
   function logout() {
     updateUser(false);
     router.push("./login");
+    localStorage.removeItem("isLoggedIn");
+    localStorage.removeItem("email");
+    localStorage.removeItem("fullname");
+    toast.warning("Log Out successfully");
   }
 
   return (
