@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { toast } from "react-toastify";
+import { persist } from "zustand/middleware";
 
 interface storeTypes {
   login: boolean;
@@ -15,53 +16,66 @@ interface storeTypes {
   decrease: (item: any) => void;
 }
 
-const useUserStore = create<storeTypes>((set) => ({
-  login: false,
-  basket: [],
-  AccEmail: "",
-  AccFullName: "",
-  alertExist: false,
-  updateUser: (logINUser) => set({ login: logINUser }),
-  AccInfo: (userEmail, userFullName) =>
-    set({ AccEmail: userEmail, AccFullName: userFullName }),
-  updateBasket: (item) =>
-    set((state) => {
-      const newProduct = item.id;
+const useUserStore = create<storeTypes>()(
+  persist(
+    (set, get) => ({
+      login: false,
+      basket: [],
+      AccEmail: "",
+      AccFullName: "",
+      alertExist: false,
+      updateUser: (logINUser) => set({ login: logINUser }),
+      AccInfo: (userEmail, userFullName) =>
+        set({ AccEmail: userEmail, AccFullName: userFullName }),
+      updateBasket: (item) =>
+        set((state) => {
+          const newProduct = item.id;
 
-      const exists = state.basket.find((i) => i.id === newProduct);
+          const exists = state.basket.find((i) => i.id === newProduct);
 
-      if (exists) {
-        toast.error("This product has already been added");
-        return state;
-      } else {
-        toast.success("Added successfully");
-        return { basket: [...state.basket, item] };
-      }
+          if (exists) {
+            toast.error("This product has already been added");
+            return state;
+          } else {
+            toast.success("Added successfully");
+            return { basket: [...state.basket, item] };
+          }
+        }),
+      deleteItem: (id) =>
+        set((state) => {
+          toast.warning(`${id} deleted`);
+
+          return { basket: state.basket.filter((item) => item.id !== id) };
+        }),
+
+      // increase item
+      increaseBtn: (id) =>
+        set((state) => {
+          const newCountItem = state.basket.map((item) =>
+            item.id == id ? { ...item, count: item.count + 1 } : item
+          );
+          return { basket: newCountItem };
+        }),
+
+      // decrease item
+      decrease: (id) =>
+        set((state) => {
+          const newCountItem = state.basket.map((item) =>
+            item.id == id ? { ...item, count: item.count + 1 } : item
+          );
+          return { basket: newCountItem };
+        }),
     }),
-  deleteItem: (id) =>
-    set((state) => {
-      toast.warning(`${id} deleted`);
-
-      return { basket: state.basket.filter((item) => item.id !== id) };
-    }),
-
-  // increase item
-  increaseBtn: (id) =>
-    set((state) => {
-      const newCountItem = state.basket.map((item) =>
-        item.id == id ? { ...item, count: item.count + 1 } : item
-      );
-      return { basket: newCountItem };
-    }),
-
-  // decrease item
-  decrease: (id) =>
-    set((state) => {
-      const newCountItem = state.basket.map((item) =>
-        item.id == id ? { ...item, count: item.count + 1 } : item
-      );
-      return { basket: newCountItem };
-    }),
-}));
+    {
+      name: "user-storage",
+      partialize: (state) => ({
+        login: state.login,
+        AccEmail: state.AccEmail,
+        AccFullName: state.AccFullName,
+        basket: state.basket,
+      }),
+    }
+  )
+);
 
 export default useUserStore;
