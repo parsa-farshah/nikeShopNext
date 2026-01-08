@@ -3,6 +3,7 @@ import SearchComponent from "./SearchComponent";
 import FooterMobileAccordion from "./FooterMobileAccordion";
 import Image from "next/image";
 import LogoFooter from "./LogoFooter";
+import MySocial from "./MySocial";
 
 function Footer() {
   const support = ["Shipping & FAQs", "Contact", "HSA/FSA", "Blog", "Sitemap"];
@@ -114,6 +115,7 @@ function Footer() {
       <div className="relative w-full h-[133px] mt-10">
         <LogoFooter />
       </div>
+      <MySocial />
     </div>
   );
 }
