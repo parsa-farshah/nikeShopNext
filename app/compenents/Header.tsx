@@ -33,6 +33,9 @@ function Header() {
   }
 
   const dataSearchReady = data.filter((val : any) => {
+    if (search == "") {
+      return null
+    }
     return val.id.toLowerCase().includes(search);
   });
 
